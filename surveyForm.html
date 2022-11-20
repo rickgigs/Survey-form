@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            A survey form
+        </title>
+        <link rel="stylesheet" type="text/css" href="surveyForm.css">
+    </head>
+    <body>
+        <div class="heading">
+            <h1>Survey Form</h1>
+        </div>
+        <form onsubmit="return mailchk() && nameval()">
+        <div class="surveyform" id="surveyform">
+            <table class="tab">
+                <caption>
+                    Let us know how we can improve knowledge
+                </caption>
+                <tr>
+                    <td class="ques">
+                        <label class="q">* Name:</label>
+                    </td>
+                    <td class="ans">
+                        <input class="text" type="text" name="name" id="name" placeholder="Enter your name" onblur="nameval()" required><br>
+                        <span id="nam"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques">
+                        <label class="q">* Email:</label>
+                    </td>
+                    <td class="ans">
+                        <input class="text" type="text" name="name" id="mail" placeholder="Enter your Email" onblur="mailchk()" required><br>
+                        <span id="msg"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques">
+                        <label class="q">* Age:</label>
+                    </td>
+                    <td class="ans">
+                        <input type="number" name="age" value="age" placeholder="age" max="122" required>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques">
+                        Which option best describes your current role?
+                    </td>
+                    <td class="ans">
+                        <SELECT class="dropdown">
+                        <option selected="Student">Student</option>
+                        <option>Undergraduate</option>
+                        <option>Postgraduate</option>
+                    </SELECT>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques ques5">
+                        * How likely is that you would recommend <br>our website to a friend?
+                    </td>
+                    <td class="ans">
+                    <input class="radio" type="radio" name="chances" value="Definitely" required> Definitely<br>
+                    <input class="radio" type="radio" name="chances" value="Maybe" required>Maybe<br>
+                    <input class="radio" type="radio" name="chances" value="Not sure" required>Not Sure<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques ques6">
+                        What do you like most in our website:
+                    </td>
+                    <td class="ans">
+                        <select name="Select an option" class="dropdown">
+                            <option selected="selected">Select an option</option>
+                            <option>Area</option>
+                            <option>Staff</option>
+                            <option>Your mentor</option><br>
+                        </select>
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ques ques7">
+                        Things that should be improved in the future<br>(Check all that apply)
+                    </td>
+                    <td class="ans">
+                    <input class="checkbox" type="checkbox" name="Front-end Projects" value="Front-end Projects">Front-end Projects<br>
+                    <input class="checkbox" type="checkbox" name="Back-end Projects" value="Back-end Projects">Back-end Projects<br>
+                    <input class="checkbox" type="checkbox" name="Data Visualisation" value="Data Visualisation">Data Visualisation<br>
+                    </td>
+                </tr>
+                
+            </table>
+            <button type="submit" class="submit" value="submit" onclick="mailchk()"> Submit Survey </button>
+       </div>
+       </form>
+
+    <script>
+        function nameval(){
+            var nam = document.getElementById('name').value;
+            var st = document.getElementById('nam');
+            if(nam.length==0)
+            {
+                st.innerHTML="*Name can't be blank";
+                st.style.color="red";
+                st.style.fontSize="12px";
+                return false;
+            }
+            else if(!nam.match(/^[a-zA-Z]+$/))
+            {
+                st.innerHTML="*Name can't have a number";
+                st.style.color="red";
+                st.style.fontSize="12px";
+                return false;
+            }
+            else if(nam.length<3 && nam.length>0)
+            {
+            st.innerHTML="*Must contain atleast three characters";
+            st.style.color="red";
+            st.style.fontSize="12px";
+            return false;
+            }
+            else{
+                st.innerHTML="";
+                return true;
+            }
+            
+            
+        }
+
+        function mailchk()
+        {
+            var mail = document.getElementById('mail').value;
+            var sty = document.getElementById('msg');
+            var atpos=mail.indexOf("@");
+            var dotpos=mail.lastIndexOf(".");
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length)
+            {
+                sty.innerHTML="*Please enter a valid email";
+                sty.style.color="red";
+                sty.style.fontSize="12px";
+                return false;
+            }
+            else{
+                sty.innerHTML="";
+                return true;
+            }
+        }
+        
+    </script>
+    </body>
+</html>
